@@ -16,7 +16,9 @@ try {
   const Worklets = WorkletsProxy.Worklets
   isAsyncContextBusy = Worklets.createSharedValue(false)
 
-  const asyncContext = Worklets.createContext('VisionCamera.async')
+  // const asyncContext = Worklets.createContext('VisionCamera.async')
+  // https://github.com/mrousavy/react-native-vision-camera/issues/2820#issuecomment-2640377729
+  const asyncContext = Worklets.defaultContext
   runOnAsyncContext = asyncContext.createRunAsync((frame: Frame, func: () => void) => {
     'worklet'
     try {
